@@ -1,0 +1,19 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  padding-top: 2em;
+}
+
+.flash {
+  position: fixed;
+  top: 0;right:0;left:0;
+  text-align: center;
+  border-radius: 0;
+  background: rgb(229,255,229);
+}
+
+.bottom-left {
+  position: fixed;
+  bottom: 20px; left: 15px;
+}
