@@ -19,7 +19,7 @@ puts "#{users_added} users added!"
 
 # SEED WORK-DAYS OUT TO ONE YEAR
 # -----------------------------------------
-start_date = Date.today
+start_date = Time.zone.today
 end_date   = start_date + 1.year
 
 # Add work days and user association

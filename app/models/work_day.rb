@@ -2,7 +2,7 @@ class WorkDay < ActiveRecord::Base
   belongs_to :user
 
   def self.hero_for_today_message
-    date = find_by_date(Date.today)
+    date = find_by_date(Time.zone.today)
 
     if date && date.user
       user_name = date.user
@@ -15,8 +15,8 @@ class WorkDay < ActiveRecord::Base
   end
 
   def self.schedule_this_month
-    month_start = Date.today.beginning_of_month
-    month_end   = Date.today.end_of_month
+    month_start = Time.zone.today.beginning_of_month
+    month_end   = Time.zone.today.end_of_month
     where(date: month_start..month_end)
   end
 
@@ -29,7 +29,7 @@ class WorkDay < ActiveRecord::Base
   end
 
   def swappable_days(user)
-    self.class.where("user_id IS NOT NULL AND user_id != ? AND date > ?", user.id, Date.today)
+    self.class.where("user_id IS NOT NULL AND user_id != ? AND date > ?", user.id, Time.zone.today)
   end
 
   def self.swap_work_days(original, requested)

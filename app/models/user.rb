@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   end
 
   def upcoming_work_days
-    WorkDay.where(user: self).where("date > ?", Date.today)
+    WorkDay.where(user: self).where("date > ?", Time.zone.today)
   end
 
   # Below methods are used to configure Devise so that a username
