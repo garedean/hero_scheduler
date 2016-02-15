@@ -49,7 +49,7 @@ class WorkDay < ActiveRecord::Base
 
   def next_open_work_day(start_date)
     self.class.order(date: :asc)
-      .find_by('user_id IS NULL AND date > ?', start_date.date)
+      .find_by('user_id IS NULL')
   end
 
   def user

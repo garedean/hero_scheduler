@@ -19,14 +19,10 @@ $(function() {
 
   $('.reschedule-link').click(function() {
     var nextOpenDay = $(this).data('next-open-day');
-    var response    = confirm("The next open shift is " + nextOpenDay + ". Reschedule to that date?");
+    var response    = confirm("We need " + nextOpenDay + " filled! Reschedule to that date?");
 
     if (response === true) {
       $(this).parent().find('.edit_user').submit();
     }
   });
 })
-
-$(document).on('page:change', function(event) {
-  $('.flash').delay(1500).fadeOut(500);
-});
