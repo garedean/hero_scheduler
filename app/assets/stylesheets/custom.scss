@@ -8,6 +8,8 @@ body {
 .page-header h1 {
   font-size: 3.5em;
   text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e1e1e1;
 }
 
 .flash {
@@ -42,8 +44,18 @@ form.edit_work_day {
 
 .login-wrapper {
   margin-top: 50px;
+  .notes {
+    margin-top: 50px;
+    hr {
+      margin: 10px 0;
+    }
+  }
 }
 
 form.new_user {
   margin-bottom: 20px;
+}
+
+.support-hero {
+  font-weight: 600;
 }

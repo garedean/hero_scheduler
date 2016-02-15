@@ -6,7 +6,7 @@
       <tr>
         <td><%= work_day %></td>
         <td>
-          <%= link_to "Reschedule me", "#", class: 'reschedule-link', data: { next_open_day: work_day.next_open_work_day(work_day).to_s } %>
+          <%= link_to "Reschedule", "#", class: 'reschedule-link', data: { next_open_day: work_day.next_open_work_day(work_day).to_s } %>
 
           <%= form_for current_user,
             url: { controller: "users", action: "reschedule" },
@@ -22,9 +22,10 @@
 
           <%= simple_form_for work_day, class: 'form-horizontal' do |f| %>
             <%= f.collection_select :id,
-              work_day.swappable_days(current_user).order(date: :asc),
-              :id, :date %>
-            <%= f.button :submit %>
+              work_day.swappable_days(current_user)
+              .order(date: :asc),
+              :id, :user_and_date %>
+            <%= f.submit 'Swap Day' %>
           <% end %>
 
         </td>

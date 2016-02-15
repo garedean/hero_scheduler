@@ -6,11 +6,11 @@ class WorkDay < ActiveRecord::Base
 
     if date && date.user
       user_name = date.user
-      "Today's Support Hero is #{user_name}!"
+      "#{user_name}!"
     elsif date
-      "No Support Hero today—nobody is schedule!"
+      "Nobody schedule!"
     else
-      "No Support Hero today, it isn't a work day!"
+      "No work today!"
     end
   end
 
@@ -21,9 +21,6 @@ class WorkDay < ActiveRecord::Base
   end
 
   def self.valid?(date)
-    # I cheated here—it was a lot easier to use USA holidays using
-    # the 'Holiday' gem, instead of California-specific holidays,
-    # so that's what I used
     true if weekday?(date) && !holiday?(date)
   end
 
@@ -67,6 +64,10 @@ class WorkDay < ActiveRecord::Base
       original_work_day.save
       requested_work_day.save
     end
+  end
+
+  def user_and_date
+    "#{user} on #{date.strftime('%a %b %d')}"
   end
 
   private

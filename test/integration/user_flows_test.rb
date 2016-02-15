@@ -15,7 +15,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   def login
     visit('/')
-    fill_in('Username', with: users(:test_user).username)
+    fill_in('Login', with: users(:test_user).username)
     fill_in('Password', with: '123abc!!')
     click_on('Log in')
   end
