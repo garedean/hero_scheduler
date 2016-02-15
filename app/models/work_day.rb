@@ -24,7 +24,6 @@ class WorkDay < ActiveRecord::Base
     # I cheated here—it was a lot easier to use USA holidays using
     # the 'Holiday' gem, instead of California-specific holidays,
     # so that's what I used
-    byebug
     true if weekday?(date) && !holiday?(date)
   end
 
