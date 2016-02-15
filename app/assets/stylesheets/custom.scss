@@ -5,15 +5,45 @@ body {
   padding-top: 2em;
 }
 
+.page-header h1 {
+  font-size: 3.5em;
+  text-align: center;
+}
+
 .flash {
   position: fixed;
   top: 0;right:0;left:0;
   text-align: center;
   border-radius: 0;
-  background: rgb(229,255,229);
+  &.alert-notice {
+    background: rgba(24, 188, 156, .2)
+  }
+  &.alert-alert {
+    background: rgba(188, 24, 56, .2);
+  }
 }
 
 .bottom-left {
   position: fixed;
   bottom: 20px; left: 15px;
+}
+
+form.edit_work_day {
+  display: none;
+}
+
+.hero-for-today {
+  margin-bottom: 40px;
+}
+
+.stretch {
+  width: 100%;
+}
+
+.login-wrapper {
+  margin-top: 50px;
+}
+
+form.new_user {
+  margin-bottom: 20px;
 }

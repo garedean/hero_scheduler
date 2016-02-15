@@ -1,0 +1,34 @@
+<h3><%= current_user.to_s.possessive %> Upcoming Schedule:</h3>
+
+<table class="table">
+  <tbody>
+    <% @upcoming_work_days.each do |work_day| %>
+      <tr>
+        <td><%= work_day %></td>
+        <td>
+          <%= link_to "Reschedule me", "#", class: 'reschedule-link', data: { next_open_day: work_day.next_open_work_day(work_day).to_s } %>
+
+          <%= form_for current_user,
+            url: { controller: "users", action: "reschedule" },
+            method: "put" do |f| %>
+              <%= hidden_field_tag 'original_date', work_day.date %>
+              <%= hidden_field_tag 'reschedule_date', work_day.next_open_work_day(work_day).date %>
+          <% end %>
+
+        </td>
+
+        <td>
+          <%= link_to "Swap with Someone Else", "#", class: "swap-link" %>
+
+          <%= simple_form_for work_day, class: 'form-horizontal' do |f| %>
+            <%= f.collection_select :id,
+              work_day.swappable_days(current_user).order(date: :asc),
+              :id, :date %>
+            <%= f.button :submit %>
+          <% end %>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

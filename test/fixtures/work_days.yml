@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+day_with_hero:
+  date: 2050-01-01
+  user_id:
+
+day_without_hero:
+  date: 2050-01-02
+  user_id:
+
+day_not_working:
+  date: 

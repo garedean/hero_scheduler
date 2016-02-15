@@ -1,10 +1,22 @@
 class User < ActiveRecord::Base
   attr_accessor :login
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
+  validates :username, presence: true
+
+  def to_s
+    username.capitalize
+  end
+
+  def upcoming_work_days
+    WorkDay.where(user: self).where("date > ?", Date.today)
+  end
+
+  # Below methods are used to configure Devise so that a username
+  # is used for authentication without the need for an email address
+  # http://stackoverflow.com/questions/9165843/devise-not-requiring-email
+  # ---------------------------------------------------------------------
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -14,7 +26,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  # http://stackoverflow.com/questions/9165843/devise-not-requiring-email
   def email_required?
     false
   end

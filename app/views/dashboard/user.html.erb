@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1>Support Hero Scheduler</h1>
+</div>
+
+<div class="row hero-for-today">
+  <div class="col-xs-12">
+    <h3 class="text-center"><%= @hero_for_today_message %></h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <%= render partial: "user_schedule" %>
+  </div>
+
+  <div class="col-sm-6">
+    <%= render partial: "full_schedule", locals: { full_schedule: @full_schedule } %>
+  </div>
+</div>

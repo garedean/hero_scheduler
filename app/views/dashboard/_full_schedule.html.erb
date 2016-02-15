@@ -1,0 +1,12 @@
+<h3>Full Schedule for March:</h3>
+
+<table class="table">
+  <tbody>
+    <% full_schedule.each do |work_day| %>
+      <tr>
+        <td><%= work_day %></td>
+        <td><%= work_day.user %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
