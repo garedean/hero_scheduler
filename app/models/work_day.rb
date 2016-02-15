@@ -21,7 +21,11 @@ class WorkDay < ActiveRecord::Base
   end
 
   def self.valid?(date)
-    true if weekday?(date)
+    # I cheated here—it was a lot easier to use USA holidays using
+    # the 'Holiday' gem, instead of California-specific holidays,
+    # so that's what I used
+    byebug
+    true if weekday?(date) && !holiday?(date)
   end
 
   def to_s
@@ -72,5 +76,9 @@ class WorkDay < ActiveRecord::Base
     weekdays    = [1,2,3,4,5]
     day_of_week = date.wday
     weekdays.include?(day_of_week)
+  end
+
+  def self.holiday?(date)
+    Holidays.on(date, :us).any?
   end
 end
