@@ -1,28 +1,12 @@
-== README
+# Hero Scheduler
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The purpose of this application is to store and display the on-duty schedule for a team. The 'Support Hero' is the team member providing heroic custom support on a given day.
 
-Things you may want to cover:
+# Features
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  - Displays today’s Support Hero
+  - Displays a single user’s schedule showing the days they are assigned to Support Hero
+  - Display the full schedule for all users in the current month.
+  - Users are be to mark one of their days on duty as undoable. The system reschedules accordingly
+  - Takes into account weekends and California’s holidays making sure not to schedule team members on those days
+  - Users are able to swap duty with another user’s specific day
