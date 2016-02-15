@@ -42,19 +42,6 @@ class WorkDay < ActiveRecord::Base
       original.save
       requested.save
     end
-
-
-
-    # original_date  = original.date
-    # requested_date = requested.date
-    #
-    # original.date  = requested_date
-    # requested.date = original_date
-    #
-    # transaction do
-    #   original.save
-    #   requested.save
-    # end
   end
 
   def next_open_work_day(start_date)
@@ -70,7 +57,7 @@ class WorkDay < ActiveRecord::Base
     original_work_day  = where(date: original).first
     requested_work_day = where(date: requested).first
 
-    original_work_day.date  = nil
+    original_work_day.user  = nil
     requested_work_day.user = user
 
     transaction do
